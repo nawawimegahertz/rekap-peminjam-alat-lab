@@ -135,6 +135,17 @@
       document.getElementById("buttonType").value = buttonType;
       generateCaptcha();
     }
+    
+    // Menutup popup CAPTCHA jika klik di luar captcha-box
+    document.addEventListener("click", function(event) {
+      const captchaPopup = document.getElementById("captcha-popup");
+      const captchaBox = document.querySelector(".captcha-box");
+
+      // Cek apakah popup terbuka dan klik terjadi di luar captcha-box
+      if (captchaPopup.style.display === "flex" && !captchaBox.contains(event.target)) {
+        captchaPopup.style.display = "none";  // Menyembunyikan popup
+      }
+    });
 
     function generateCaptcha() {
       const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
