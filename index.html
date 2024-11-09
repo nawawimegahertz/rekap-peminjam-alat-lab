@@ -150,19 +150,6 @@
       document.getElementById("captchaCode").textContent = captcha;
     }
 
-    function verifyCaptcha() {
-      const input = document.getElementById("captchaInput").value;
-      const code = document.getElementById("captchaCode").textContent;
-      if (input === code) {
-        document.getElementById("captcha-popup").style.display = "none";
-        verifyData(document.getElementById("buttonType").value);
-      } else {
-        alert("CAPTCHA tidak cocok. Coba lagi.");
-        generateCaptcha();
-        document.getElementById("captchaInput").value = "";
-      }
-    }
-
     async function verifyData() {
       const kelas = document.getElementById("kelasDropdown").value;
       const nama = document.getElementById("namaDropdown").value;
@@ -178,7 +165,9 @@
         const result = await response.json();
 
         if (result.match) {
-          alert("Terdaftar");
+          // Tampilkan konten baru dan sembunyikan form lama
+          document.getElementById("formContent").style.display = "none";
+          document.getElementById("newContent").style.display = "block";
         } else {
           alert("Password salah");
         }
