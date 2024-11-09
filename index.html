@@ -150,6 +150,19 @@
       document.getElementById("captchaCode").textContent = captcha;
     }
 
+    function verifyCaptcha() {
+      const enteredCaptcha = document.getElementById("captchaInput").value;
+      const generatedCaptcha = document.getElementById("captchaCode").textContent;
+  
+      if (enteredCaptcha === generatedCaptcha) {
+        document.getElementById("captcha-popup").style.display = "none";
+        verifyData();
+      } else {
+        alert("CAPTCHA tidak cocok, coba lagi.");
+        generateCaptcha(); // Regenerasi CAPTCHA untuk mencegah percobaan berulang
+      }
+    }
+
     async function verifyData() {
       const kelas = document.getElementById("kelasDropdown").value;
       const nama = document.getElementById("namaDropdown").value;
