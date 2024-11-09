@@ -166,11 +166,21 @@
         alert("Mohon lengkapi semua kolom.");
         return;
       }
+
       alert(buttonType + " berhasil!");
       document.getElementById("passwordInput").value = "";
     }
 
     document.addEventListener("DOMContentLoaded", fetchData);
+    
+    // Prevent closing CAPTCHA popup immediately after opening
+    document.addEventListener("click", function(event) {
+      const popup = document.getElementById("captcha-popup");
+      const captchaBox = document.querySelector(".captcha-box");
+      if (popup.style.display === "flex" && !captchaBox.contains(event.target) && event.target.tagName !== "BUTTON") {
+        popup.style.display = "none";
+      }
+    });
   </script>
 </head>
 <body>
