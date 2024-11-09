@@ -178,9 +178,9 @@
         const result = await response.json();
 
         if (result.match) {
-          alert("Verifikator terdaftar.");
+          alert("Terdaftar");
         } else {
-          alert("Password salah!");
+          alert("Password salah");
         }
 
         // Kosongkan kolom password setelah verifikasi
@@ -204,23 +204,31 @@
 </head>
 <body>
   <div class="container">
-    <h1><strong>Verifikasi Data Peminjam</strong></h1>
-    <label for="kelasDropdown"><strong>Angkatan:</strong></label>
-    <select id="kelasDropdown" onchange="fetchNama(this.value)">
-      <option value="">Pilih Angkatan</option>
-    </select>
-    
-    <label for="namaDropdown"><strong>Nama:</strong></label>
-    <select id="namaDropdown">
-      <option value="">Pilih Nama</option>
-    </select>
-    
-    <label for="passwordInput"><strong>Kata Sandi:</strong></label>
-    <input type="password" id="passwordInput" placeholder="Masukkan Password">
+    <div id="formContent">
+      <h1><strong>Verifikasi Data Peminjam</strong></h1>
+      <label for="kelasDropdown"><strong>Angkatan:</strong></label>
+      <select id="kelasDropdown" onchange="fetchNama(this.value)">
+        <option value="">Pilih Angkatan</option>
+      </select>
 
-    <div class="button-group">
-      <button onclick="openCaptchaPopup('Peminjaman')">Peminjaman</button>
-      <button onclick="openCaptchaPopup('Pengembalian')">Pengembalian</button>
+      <label for="namaDropdown"><strong>Nama:</strong></label>
+      <select id="namaDropdown">
+        <option value="">Pilih Nama</option>
+      </select>
+
+      <label for="passwordInput"><strong>Kata Sandi:</strong></label>
+      <input type="password" id="passwordInput" placeholder="Masukkan Password">
+
+      <div class="button-group">
+        <button onclick="openCaptchaPopup('Peminjaman')">Peminjaman</button>
+        <button onclick="openCaptchaPopup('Pengembalian')">Pengembalian</button>
+      </div>
+    </div>
+
+    <!-- Konten baru yang akan muncul setelah verifikasi berhasil -->
+    <div id="newContent" style="display: none;">
+      <h1>Selamat Datang!</h1>
+      <p>Konten baru akan ditampilkan di sini.</p>
     </div>
   </div>
 
