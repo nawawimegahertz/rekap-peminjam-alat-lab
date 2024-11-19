@@ -100,6 +100,13 @@
       border: 1px solid #ddd;
       border-radius: 4px;
     }
+    #captchaCode {
+      font-weight: bold;
+      font-size: 20px;
+      user-select: none; /* Mencegah seleksi teks */
+      pointer-events: none; /* Mencegah klik */
+    }
+    
   </style>
   <script>
     async function fetchData() {
@@ -147,8 +154,15 @@
       for (let i = 0; i < 6; i++) {
         captcha += characters.charAt(Math.floor(Math.random() * characters.length));
       }
-      document.getElementById("captchaCode").textContent = captcha;
+      const captchaCode = document.getElementById("captchaCode");
+      captchaCode.textContent = captcha;
+    
+      // Cegah klik kanan pada CAPTCHA
+      captchaCode.addEventListener("contextmenu", function(event) {
+        event.preventDefault(); // Mencegah klik kanan
+      });
     }
+
 
     function verifyCaptcha() {
       const enteredCaptcha = document.getElementById("captchaInput").value;
